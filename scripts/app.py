@@ -23,6 +23,13 @@ class FaceRecognitionApp(QWidget):
         # Add a profile picture with scaled size
         self.profile_pic = QLabel(self)
         pixmap = QPixmap("bot_pic.jpg") # Replace with your chosen image
+        
+        # Fallback: If the image doesn't load, create a blank placeholder
+        if pixmap.isNull():
+            pixmap = QPixmap(100, 100)  # Creates a blank 100x100 placeholder
+
+
+
         scaled_pixmap = pixmap.scaled(100, 100, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
         self.profile_pic.setPixmap(scaled_pixmap)
         self.profile_pic.setAlignment(Qt.AlignmentFlag.AlignCenter)
